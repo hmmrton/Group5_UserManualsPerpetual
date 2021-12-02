@@ -11,7 +11,7 @@ public class ComputerFocusCamera : MonoBehaviour
     // Zoomed:
     // position x -> 0 y -> 1.75 z -> 31
     float zoomedPosY = 1.75f;
-    float zoomedPosZ = 31.0f;
+    float zoomedPosZ = 31.6f;
 
     bool zoomed;
     bool zooming;
@@ -19,11 +19,17 @@ public class ComputerFocusCamera : MonoBehaviour
     float nextZoom = 0.0f;
     public float duration = 1.0f;
 
+    public Camera officeCam;
+    public Camera gameCam;
+
     private void Start()
     {
         zoomed = false;
         zooming = false;
         zoomEnabled = true;
+
+        officeCam.enabled = true;
+        gameCam.enabled = false;
     }
 
     // Update is called once per frame
@@ -55,7 +61,7 @@ public class ComputerFocusCamera : MonoBehaviour
         }
         if (zoomed)
         {
-            gameObject.transform.position = Vector3.Lerp(
+            gameObject.transform.position = Vector3.Lerp(       
                 new Vector3(0, unzoomedPosY, unzoomedPosZ),
                 gameObject.transform.position,
                 Time.time / nextZoom
@@ -69,10 +75,26 @@ public class ComputerFocusCamera : MonoBehaviour
                 Time.time / nextZoom
             );
         }
+
+        //officeCam.enabled = true;
+        //gameCam.enabled = false;
     }
 
     void StopZooming()
     {
+ 
+        if (gameCam.enabled)
+        {
+            gameCam.enabled = false;
+            officeCam.enabled = true;
+        }
+        else
+        {
+            officeCam.enabled = false;
+            gameCam.enabled = true;
+            
+        }
+
         zoomed = !zoomed;
         gameObject.transform.position = zoomed ? new Vector3(0, zoomedPosY, zoomedPosZ) : new Vector3(0, unzoomedPosY, unzoomedPosZ);
         zooming = false;
