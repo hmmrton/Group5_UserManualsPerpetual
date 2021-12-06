@@ -37,14 +37,14 @@ public class ComputerFocusCamera : MonoBehaviour
     {
         if (zooming)
         {
-            //Debug.Log(zoomed ? "unfocusing" : "focusing");
-            //Debug.Log("zoomEnabled? " + zoomEnabled);
-            //Debug.Log("updates: " + nextZoom);
+            Debug.Log(zoomed ? "unfocusing" : "focusing");
+            Debug.Log("zoomEnabled? " + zoomEnabled);
+            Debug.Log("updates: " + nextZoom);
             ZoomCamera();
         }
         if ((zoomEnabled && Input.GetAxis("FocusUnfocus") > 0))
         {
-            //Debug.Log("zoomin");
+            Debug.Log("zoomin");
             nextZoom = Time.time + duration;
             zoomEnabled = false;
             zooming = true;
@@ -53,7 +53,7 @@ public class ComputerFocusCamera : MonoBehaviour
 
     void ZoomCamera()
     {
-        //Debug.Log("next " + nextZoom + " time time " + Time.time + " zoomin " + zooming);
+        Debug.Log("next " + nextZoom + " time time " + Time.time + " zoomin " + zooming);
         if (nextZoom < Time.time)
         {
             StopZooming();
@@ -75,22 +75,24 @@ public class ComputerFocusCamera : MonoBehaviour
                 Time.time / nextZoom
             );
         }
+
+        //officeCam.enabled = true;
+        //gameCam.enabled = false;
     }
 
     void StopZooming()
     {
  
-        if (!officeCam.enabled)
+        if (gameCam.enabled)
         {
-            Debug.Log("swapping to office cam");
-            officeCam.enabled = true;
             gameCam.enabled = false;
+            officeCam.enabled = true;
         }
         else
         {
-            Debug.Log("trying to swap to game cam");
-            gameCam.enabled = true;
             officeCam.enabled = false;
+            gameCam.enabled = true;
+            
         }
 
         zoomed = !zoomed;
