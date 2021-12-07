@@ -101,5 +101,6 @@ public class GameManagerBrickBreaker : MonoBehaviour
     public void handleQuitButtonClicked()
     {
         gameComplete = true;
+        GameManagerOffice.brickBreakerComplete = true;
     }
 }

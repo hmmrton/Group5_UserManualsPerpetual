@@ -9,6 +9,7 @@ public class DesktopIcon : MonoBehaviour
 {
     Button button;
     public GameObject BrickBreaker;
+    public GameObject Pong;
 
     // Start is called before the first frame update
     /*void Start()
@@ -29,5 +30,9 @@ public class DesktopIcon : MonoBehaviour
         //if (!GameManagerBrickBreaker.gameComplete) // once game complete, disable game
         // Instantiate
         BrickBreaker.SetActive(true);
+    }
+    public void handlePongButtonClicked()
+    {
+        Pong.SetActive(true);
     }
 }

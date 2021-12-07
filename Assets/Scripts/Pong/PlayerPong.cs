@@ -8,11 +8,14 @@ public class PlayerPong : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.transform.position.y < 4 && gameObject.transform.position.y > -4
+        if (ComputerFocusCamera.zoomed) // can only affect player paddle if zoomed in
+        {
+            if (gameObject.transform.position.y < 4 && gameObject.transform.position.y > -4
             || gameObject.transform.position.y >= 4 && Input.GetAxis("Vertical") < 0
             || gameObject.transform.position.y <= -4 && Input.GetAxis("Vertical") > 0)
-        {
-            transform.Translate(0f, Input.GetAxis("Vertical") * speed * Time.deltaTime, 0f);
+            {
+                transform.Translate(0f, Input.GetAxis("Vertical") * speed * Time.deltaTime, 0f);
+            }
         }
     }
 }

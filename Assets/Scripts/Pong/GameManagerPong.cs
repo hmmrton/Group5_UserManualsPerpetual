@@ -9,9 +9,11 @@ public class GameManagerPong : MonoBehaviour
     public Text aiScoreText;
     public GameObject ballPrefab;
     public static GameObject currentBall;
+    public GameObject pongUI;
 
     private void Start()
     {
+        pongUI.SetActive(true);
         resetGame();
     }
 
