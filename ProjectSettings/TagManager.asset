@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BrickBreakerBall
   - Brick
+  - PongBall
   layers:
   - Default
   - TransparentFX

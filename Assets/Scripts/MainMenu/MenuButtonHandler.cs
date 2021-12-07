@@ -11,6 +11,6 @@ public class MenuButtonHandler : MonoBehaviour
     }
     public void handleControlsButtonClicked()
     {
-        SceneManager.LoadScene("Controls");
+        SceneManager.LoadScene("ControlsScene");
     }
 }
