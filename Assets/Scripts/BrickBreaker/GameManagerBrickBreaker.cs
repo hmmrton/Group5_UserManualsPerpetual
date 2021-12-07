@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class GameManager : MonoBehaviour
+public class GameManagerBrickBreaker : MonoBehaviour
 {
     public bool playing = false;
     public bool menu = true;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject PlayMenu;
     public GameObject LossMenu;
     public GameObject WinMenu;
-    public bool gameComplete;
+    public static bool gameComplete = false;
     List<GameObject> bricks;
     GameObject currentBrickSet;
     GameObject currentBall;
@@ -23,9 +23,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
         playing = false;
-        gameComplete = false;
         menu = true;
         PlayMenu.SetActive(true);
         WinMenu.SetActive(false);
@@ -48,6 +46,13 @@ public class GameManager : MonoBehaviour
         currentSlider = Instantiate(slider);
     }
 
+    void CleanupGame()
+    {
+        Destroy(currentBrickSet);
+        Destroy(currentBall);
+        Destroy(currentSlider);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,7 +65,7 @@ public class GameManager : MonoBehaviour
                 menu = true;
                 playing = false;
                 LossMenu.SetActive(true);
-                Time.timeScale = 0;
+                CleanupGame();
             }
             else if (bricks.Count == 0)
             {
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
                 menu = true;
                 playing = false;
                 WinMenu.SetActive(true);
-                Time.timeScale = 0;
+                CleanupGame();
             }
             Debug.Log(bricks.Count);
             bricks = bricks.Where(b => b != null).ToList();
@@ -80,23 +85,15 @@ public class GameManager : MonoBehaviour
     {
         SetupGame();
         PlayMenu.SetActive(false);
-        Time.timeScale = 1;
         playing = true;
         menu = false;
     }
 
     public void handleRetryButtonClicked()
     {
-        // need to reset ball
-        Debug.Log("trying retry1");
-        Destroy(currentBrickSet);
-        Destroy(currentBall);
-        Destroy(currentSlider);
         BottomWall.ballHitBottom = false;
         SetupGame();
         LossMenu.SetActive(false);
-        Time.timeScale = 1;
-        Debug.Log("trying retry2");
         playing = true;
         menu = false;
     }

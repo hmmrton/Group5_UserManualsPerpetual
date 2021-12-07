@@ -13,7 +13,7 @@ public class ComputerFocusCamera : MonoBehaviour
     float zoomedPosY = 1.75f;
     float zoomedPosZ = 31.6f;
 
-    bool zoomed;
+    public static bool zoomed;
     bool zooming;
     bool zoomEnabled;
     float nextZoom = 0.0f;
@@ -37,14 +37,14 @@ public class ComputerFocusCamera : MonoBehaviour
     {
         if (zooming)
         {
-            Debug.Log(zoomed ? "unfocusing" : "focusing");
-            Debug.Log("zoomEnabled? " + zoomEnabled);
-            Debug.Log("updates: " + nextZoom);
+            //Debug.Log(zoomed ? "unfocusing" : "focusing");
+            //Debug.Log("zoomEnabled? " + zoomEnabled);
+            //Debug.Log("updates: " + nextZoom);
             ZoomCamera();
         }
         if ((zoomEnabled && Input.GetAxis("FocusUnfocus") > 0))
         {
-            Debug.Log("zoomin");
+            //Debug.Log("zoomin");
             nextZoom = Time.time + duration;
             zoomEnabled = false;
             zooming = true;
@@ -53,7 +53,7 @@ public class ComputerFocusCamera : MonoBehaviour
 
     void ZoomCamera()
     {
-        Debug.Log("next " + nextZoom + " time time " + Time.time + " zoomin " + zooming);
+        //Debug.Log("next " + nextZoom + " time time " + Time.time + " zoomin " + zooming);
         if (nextZoom < Time.time)
         {
             StopZooming();

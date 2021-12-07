@@ -26,22 +26,13 @@ public class Slider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (!inScreen)
-                inScreen = true;
-            else
-                inScreen = false;
-        }
-
-        if (inScreen) 
+        if (ComputerFocusCamera.zoomed) 
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(-moveHorizontal, 0.0f, 0.0f);
             //Debug.Log("movement " + movement);
             transform.Translate(movement * speed * Time.deltaTime);
         }
-        
     }
 
     void LateUpdate()
