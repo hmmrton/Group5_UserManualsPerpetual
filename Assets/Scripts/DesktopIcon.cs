@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 public class DesktopIcon : MonoBehaviour
 {
     Button button;
-    public string sceneName;
+    public GameObject BrickBreaker;
+    public GameObject Pong;
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         button = gameObject.GetComponent<Button>();
         button.onClick.AddListener(handleOnClick);
@@ -22,5 +23,16 @@ public class DesktopIcon : MonoBehaviour
     {
         Debug.Log("loading " + sceneName);
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+    }*/
+
+    public void handleBrickBreakerButtonClicked()
+    {
+        //if (!GameManagerBrickBreaker.gameComplete) // once game complete, disable game
+        // Instantiate
+        BrickBreaker.SetActive(true);
+    }
+    public void handlePongButtonClicked()
+    {
+        Pong.SetActive(true);
     }
 }

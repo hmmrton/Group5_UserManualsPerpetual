@@ -10,6 +10,8 @@ public class Slider : MonoBehaviour
     public GameObject leftBound;
     public GameObject rightBound;
 
+    bool inScreen;
+
     private float objectBounds;
 
     void Start()
@@ -17,15 +19,20 @@ public class Slider : MonoBehaviour
         objectBounds = transform.GetComponent<MeshRenderer>().bounds.extents.x // get half slider width
             + leftBound.transform.GetComponent<MeshRenderer>().bounds.extents.x; // get half wall width
         Debug.Log(objectBounds);
+
+        inScreen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(-moveHorizontal, 0.0f, 0.0f);
-        //Debug.Log("movement " + movement);
-        transform.Translate(movement * speed * Time.deltaTime);
+        if (ComputerFocusCamera.zoomed) 
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            Vector3 movement = new Vector3(-moveHorizontal, 0.0f, 0.0f);
+            //Debug.Log("movement " + movement);
+            transform.Translate(movement * speed * Time.deltaTime);
+        }
     }
 
     void LateUpdate()

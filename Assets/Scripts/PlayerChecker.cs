@@ -7,6 +7,7 @@ public class PlayerChecker : MonoBehaviour
 
     bool inScreen;
     public GameObject redWall;
+    public GameObject redWall1;
     public GameObject boss;
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class PlayerChecker : MonoBehaviour
     {
         inScreen = false;
         redWall.SetActive(false);
+        redWall1.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class PlayerChecker : MonoBehaviour
         else if(boss.transform.position == new Vector3(-1.489339f, 2.79f, 57.15f) && boss.transform.localScale == new Vector3(0, 0, 0) && inScreen)
         {
             redWall.SetActive(true);
+            redWall1.SetActive(true);
         }
     }
 }

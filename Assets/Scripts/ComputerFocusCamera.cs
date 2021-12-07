@@ -13,7 +13,7 @@ public class ComputerFocusCamera : MonoBehaviour
     float zoomedPosY = 1.75f;
     float zoomedPosZ = 31.6f;
 
-    bool zoomed;
+    public static bool zoomed;
     bool zooming;
     bool zoomEnabled;
     float nextZoom = 0.0f;
@@ -75,22 +75,24 @@ public class ComputerFocusCamera : MonoBehaviour
                 Time.time / nextZoom
             );
         }
+
+        //officeCam.enabled = true;
+        //gameCam.enabled = false;
     }
 
     void StopZooming()
     {
  
-        if (!officeCam.enabled)
+        if (gameCam.enabled)
         {
-            Debug.Log("swapping to office cam");
-            officeCam.enabled = true;
             gameCam.enabled = false;
+            officeCam.enabled = true;
         }
         else
         {
-            Debug.Log("trying to swap to game cam");
-            gameCam.enabled = true;
             officeCam.enabled = false;
+            gameCam.enabled = true;
+            
         }
 
         zoomed = !zoomed;

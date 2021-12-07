@@ -60,8 +60,25 @@ public class BossMoveDebug : MonoBehaviour
         {
             StartCoroutine(doorClose());
         }
-        DebugCommand();
-        if (transform.position == target1 || transform.position == target)
+        
+        /*if (currentPattern == 3)
+        {
+            if (transform.position != target1 && transform.position != target) 
+            {
+                StartCoroutine(waitBoss());
+                //waitBoss();
+                Debug.Log("Stalling...");
+            }
+
+
+            
+        }*/
+        else 
+        {
+            DebugCommand();
+        }
+
+        if (transform.position == target1 && currentPattern < 3 || transform.position == target && currentPattern < 3)
             currentPattern = 0;
     }
 
@@ -161,6 +178,14 @@ public class BossMoveDebug : MonoBehaviour
         
     }
 
+    /*IEnumerator waitBoss() 
+    {
+        int timeWait = Random.Range(3, 4);
+        yield return new WaitForSecondsRealtime(timeWait);
+
+        //if(timeWait < 5)
+            currentPattern = 0;
+    }*/
     
      
 }
