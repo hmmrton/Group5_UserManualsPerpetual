@@ -10,13 +10,21 @@ public class GameManagerOffice : MonoBehaviour
     public static bool pongComplete = false;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        caught = false;
+        brickBreakerComplete = false;
+        pongComplete = false; // allows reset
+    }
+
     void Update()
     {
-        if (caught)
+        /*if (caught)
         {
             SceneManager.LoadScene("LossScene");
         }
-        else if (brickBreakerComplete && pongComplete)
+        else*/ if (brickBreakerComplete && pongComplete)
         {
             SceneManager.LoadScene("WinScene");
         }

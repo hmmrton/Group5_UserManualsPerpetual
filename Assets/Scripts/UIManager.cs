@@ -8,10 +8,10 @@ public class UIManager : MonoBehaviour
     public GameObject brickBreakerLossMenu;
     public GameObject brickBreakerWinMenu;
     public GameObject PongScores;
-    bool bbPlayMenuZoomedState;
-    bool bbLossMenuZoomedState;
-    bool bbWinMenuZoomedState;
-    bool pongScoresZoomedStates;
+    public static bool bbPlayMenuZoomedState;
+    public static bool bbLossMenuZoomedState;
+    public static bool bbWinMenuZoomedState;
+    public static bool pongScoresZoomedStates;
     //Stack<HashSet<bool>> states; // only need 1 place in stack so not really worth
     bool zoomed;
     // Start is called before the first frame update

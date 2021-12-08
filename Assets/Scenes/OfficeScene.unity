@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4322011168641735823, guid: e3c51059a827fdd4ea89fb06bc8d27c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5869289421844089887, guid: e3c51059a827fdd4ea89fb06bc8d27c5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3c51059a827fdd4ea89fb06bc8d27c5, type: 3}
@@ -2083,8 +2087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab22710743bd6841a83273bded636f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redWall: {fileID: 0}
-  redWall1: {fileID: 0}
   boss: {fileID: 285469975}
 --- !u!1 &631276504 stripped
 GameObject:
@@ -4430,6 +4432,10 @@ PrefabInstance:
     - target: {fileID: 2083323277174504964, guid: 8778a55b4ec847e41b1840f5f3951576, type: 3}
       propertyPath: m_Name
       value: Boss (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083323277174504964, guid: 8778a55b4ec847e41b1840f5f3951576, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8778a55b4ec847e41b1840f5f3951576, type: 3}

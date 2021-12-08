@@ -4,39 +4,29 @@ using UnityEngine;
 
 public class PlayerChecker : MonoBehaviour
 {
-
-    bool inScreen;
-    public GameObject redWall;
-    public GameObject redWall1;
     public GameObject boss;
-
-    // Start is called before the first frame update
+    private Vector3 bossPosConstVector;
+    private Vector3 bossPosConstVector2;
     void Start()
     {
-        inScreen = false;
-        redWall.SetActive(false);
-        redWall1.SetActive(false);
+        bossPosConstVector = new Vector3(10.79f, 2.79f, 57.15f);
+        bossPosConstVector2 = new Vector3(-1.489339f, 2.79f, 57.15f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) 
-        {
-            if (!inScreen)
-                inScreen = true;
-            else
-                inScreen = false;
-        }
 
-        if (boss.transform.position == new Vector3(10.79f, 2.79f, 57.15f) && inScreen) 
+
+        if (boss.transform.position == bossPosConstVector && ComputerFocusCamera.zoomed) 
         {
-            redWall.SetActive(true);
+            GameManagerOffice.caught = true;
         }
-        else if(boss.transform.position == new Vector3(-1.489339f, 2.79f, 57.15f) && boss.transform.localScale == new Vector3(0, 0, 0) && inScreen)
-        {
-            redWall.SetActive(true);
-            redWall1.SetActive(true);
+        else if (boss.transform.position == bossPosConstVector2
+            && boss.transform.localScale == Vector3.zero
+            && ComputerFocusCamera.zoomed
+        ) {
+            GameManagerOffice.caught = true;
         }
     }
 }

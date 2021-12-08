@@ -25,7 +25,10 @@ public class GameManagerBrickBreaker : MonoBehaviour
     {
         playing = false;
         menu = true;
-        PlayMenu.SetActive(true);
+        if (ComputerFocusCamera.zoomed)
+            PlayMenu.SetActive(true);
+        else
+            UIManager.bbPlayMenuZoomedState = true;
         WinMenu.SetActive(false);
         LossMenu.SetActive(false);
     }
@@ -64,7 +67,10 @@ public class GameManagerBrickBreaker : MonoBehaviour
                 win = false;
                 menu = true;
                 playing = false;
-                LossMenu.SetActive(true);
+                if (ComputerFocusCamera.zoomed)
+                    LossMenu.SetActive(true);
+                else
+                    UIManager.bbLossMenuZoomedState = true;
                 CleanupGame();
             }
             else if (bricks.Count == 0)
@@ -73,7 +79,10 @@ public class GameManagerBrickBreaker : MonoBehaviour
                 loss = false;
                 menu = true;
                 playing = false;
-                WinMenu.SetActive(true);
+                if (ComputerFocusCamera.zoomed)
+                    WinMenu.SetActive(true);
+                else
+                    UIManager.bbWinMenuZoomedState = true;
                 CleanupGame();
             }
             Debug.Log(bricks.Count);
@@ -102,5 +111,6 @@ public class GameManagerBrickBreaker : MonoBehaviour
     {
         gameComplete = true;
         GameManagerOffice.brickBreakerComplete = true;
+        DesktopIcon.BrickBreakerDisable = true;
     }
 }
