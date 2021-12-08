@@ -125,5 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae88d5abca0fac341a00688a8b9c9196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xStartForce: -10
-  yStartForce: -10
+  xStartForce: -2
+  yStartForce: -5
