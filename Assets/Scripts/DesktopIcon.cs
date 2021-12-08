@@ -11,24 +11,31 @@ public class DesktopIcon : MonoBehaviour
     public GameObject BrickBreaker;
     public GameObject Pong;
 
-    // Start is called before the first frame update
-    /*void Start()
+    public static bool BrickBreakerDisable;
+    public static bool PongDisable;
+
+    private void Start()
     {
-        button = gameObject.GetComponent<Button>();
-        button.onClick.AddListener(handleOnClick);
-        Debug.Log("init buttonm");
+        BrickBreakerDisable = false;
+        PongDisable = false;
     }
 
-    void handleOnClick()
+    void Update()
     {
-        Debug.Log("loading " + sceneName);
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-    }*/
+        if (BrickBreakerDisable)
+        {
+            BrickBreakerDisable = false;
+            BrickBreaker.SetActive(false);
+        }
+        if (PongDisable)
+        {
+            PongDisable = false;
+            Pong.SetActive(false);
+        }
+    }
 
     public void handleBrickBreakerButtonClicked()
     {
-        //if (!GameManagerBrickBreaker.gameComplete) // once game complete, disable game
-        // Instantiate
         BrickBreaker.SetActive(true);
     }
     public void handlePongButtonClicked()

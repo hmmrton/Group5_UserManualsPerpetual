@@ -142,6 +142,7 @@ MonoBehaviour:
   aiScoreText: {fileID: 4572104077495766804}
   ballPrefab: {fileID: 450999899718433464, guid: a10be2b4473db0042b92563296c33788, type: 3}
   pongUI: {fileID: 4572104078380439421}
+  delay: 1000
 --- !u!1 &4572104077012501769
 GameObject:
   m_ObjectHideFlags: 0

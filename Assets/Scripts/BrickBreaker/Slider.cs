@@ -10,8 +10,6 @@ public class Slider : MonoBehaviour
     public GameObject leftBound;
     public GameObject rightBound;
 
-    bool inScreen;
-
     private float objectBounds;
 
     void Start()
@@ -19,8 +17,6 @@ public class Slider : MonoBehaviour
         objectBounds = transform.GetComponent<MeshRenderer>().bounds.extents.x // get half slider width
             + leftBound.transform.GetComponent<MeshRenderer>().bounds.extents.x; // get half wall width
         Debug.Log(objectBounds);
-
-        inScreen = false;
     }
 
     // Update is called once per frame
@@ -39,6 +35,6 @@ public class Slider : MonoBehaviour
     {
         Vector3 viewPos = transform.position;
         viewPos.x = Mathf.Clamp(viewPos.x, rightBound.transform.position.x + objectBounds, leftBound.transform.position.x - objectBounds); ;
-        transform.position = viewPos;
+        transform.position = viewPos; // if use kinematic is disabled, paddle does this automatically, but ball doesnt bounce right, so enable kinematic and handle this
     }
 }
