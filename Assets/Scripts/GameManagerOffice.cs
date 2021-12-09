@@ -20,11 +20,12 @@ public class GameManagerOffice : MonoBehaviour
 
     void Update()
     {
-        /*if (caught)
+        if (caught)
         {
+            Debug.Log("player was caught");
             SceneManager.LoadScene("LossScene");
         }
-        else*/ if (brickBreakerComplete && pongComplete)
+        else if (brickBreakerComplete && pongComplete)
         {
             SceneManager.LoadScene("WinScene");
         }

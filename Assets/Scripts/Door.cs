@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         doorRotation = new Vector3(0, -50, 0);
+        doorOpen = true;
     }
 
     public bool isDoorOpen()
@@ -31,6 +32,7 @@ public class Door : MonoBehaviour
     {
         if (doorOpen)
         {
+
             door.transform.eulerAngles = Vector3.zero;
             doorOpen = false;
         }

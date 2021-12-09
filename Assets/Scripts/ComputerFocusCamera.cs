@@ -14,6 +14,7 @@ public class ComputerFocusCamera : MonoBehaviour
     float zoomedPosZ = 31.6f;
 
     public static bool zoomed;
+    public static bool requestToToggleZoom;
     bool zooming;
     bool zoomEnabled;
     float nextZoom = 0.0f;
@@ -30,6 +31,7 @@ public class ComputerFocusCamera : MonoBehaviour
 
         officeCam.enabled = true;
         gameCam.enabled = false;
+        requestToToggleZoom = false;
     }
 
     // Update is called once per frame
@@ -42,9 +44,10 @@ public class ComputerFocusCamera : MonoBehaviour
             //Debug.Log("updates: " + nextZoom);
             ZoomCamera();
         }
-        if ((zoomEnabled && Input.GetAxis("FocusUnfocus") > 0))
+        if ((zoomEnabled && (Input.GetAxis("FocusUnfocus") > 0 || requestToToggleZoom)))
         {
             //Debug.Log("zoomin");
+            requestToToggleZoom = false;
             nextZoom = Time.time + duration;
             zoomEnabled = false;
             zooming = true;
