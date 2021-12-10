@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         doorRotation = new Vector3(0, -50, 0);
-        doorOpen = true;
+        doorOpen = false;
     }
 
     public bool isDoorOpen()
